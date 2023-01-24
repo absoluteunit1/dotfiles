@@ -1,0 +1,100 @@
+" LEADER KEY(s)
+nnoremap <SPACE> <Nop>
+nnoremap <BS> <Nop>
+let mapleader = " "
+nmap <BS> <leader>
+
+" SETTINGS
+set nu rnu
+set surround
+set visualbell
+set noerrorbells
+set incsearch
+set ignorecase
+
+set clipboard+=unnamed
+set clipboard+=ideaput
+set ideamarks
+set ideajoin
+set showcmd
+
+" CUSTOM COMMANDS
+
+command! E :e ~/.ideavimrc
+" command! Track :action VimFindActionIdAction | action ActivateNotificationsToolWindow -> example for doing multiple commands
+
+" NORMAL MODE MAPPINGS
+
+" Normal Mode Remaps
+nmap n nzz
+nmap N Nzz
+nnoremap } {zzk
+nnoremap { }zzj
+nnoremap d} V{d
+nnoremap d{ V}d
+nmap <C-;> @:
+
+" Visual Mode Remaps
+vnoremap { }zz
+vnoremap } {zz
+
+nnoremap <leader>dp va}o0
+
+" Modifying text
+nnoremap dl 0D
+
+" INSERT MODE MAPPINGS
+" todo: add a mapping that fixes the insert mode then escape bug how it goes back a character; on escape from insert mode, go forward a cahracter? pressing escape goes back normally but make it so it stays on character
+inoremap <C-;> <C-[>
+
+" PLUGINS
+Plug 'tpope/vim-surround'
+
+" IDE ACTIONS
+
+" Bookmarks
+map <leader>m <Action>(ToggleBookmark)
+map <leader>n <Action>(ToggleBookmarkWithMnemonic)
+map <leader>sm <Action>(ShowBookmarks)
+map <leader>sn <Action>(ShowTypeBookmarks)
+map <leader>em <Action>(EditBookmark)
+
+map <leader>p <Action>(PasteMultiple)
+map <leader>re <Action>(RenameElement)
+
+" Searching
+map <leader>a <Action>(SearchEverywhere)
+map <leader>f <Action>(GotoFile)
+map <leader>v <Action>(GotoSymbol)
+map <leader>i <Action>(GotoAction)
+map <leader>j <Action>(FindInPath)
+map <leader>gd <Action>(FindUsages)
+map <leader>/ <Action>(Find)
+
+" TODO: set up keybindings that start with g: and navigate somewhere eg: 'gt' -> GotoTest, etc
+
+" Macros
+map <leader>@ <Action>(PlaySavedMacrosAction)
+map <leader>! <Action>(PlaybackLastMacro)
+map <leader>q <Action>(StartStopMacroRecording)
+map <leader>z <Action>(StartStopMacroRecording)
+
+" Navigation
+map <leader>; <Action>(ShowNavBar)
+nmap <F2> <Action>(GotoNextError)
+nmap <F1> <Action>(GotoPreviousError)
+
+map <leader>do <Action>(QuickJavaDoc)
+map <leader>rc <Action>(RecentChanges)
+
+" Git
+map <leader>blame <Action>(Annotate)
+
+" Tabs
+map tr <Action>(MoveTabRight)
+map td <Action>(MoveTabDown)
+map to <Action>(MoveEditorToOppositeTabGroup)
+
+" Viewing Modes
+map <leader>df <Action>(ToggleDistractionFreeMode)
+map <leader>rv <Action>(IdeaVim.ReloadVimRc.reload)
